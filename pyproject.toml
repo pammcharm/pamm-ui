@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pamm_ui"
+version = "0.1.0"
+description = "Config-driven HTMLPY/CSSPY application engine backed by a C renderer."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "PAMM", email = "ngirimanamaurice8@gmail.com" }
+]
+keywords = ["gui", "engine", "html", "python", "ui", "framework"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: User Interfaces",
+]
+
+dependencies = []
+
+[project.scripts]
+pamm = "py_engine.cli:main"
+pamm-ui = "py_engine.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "ruff"
+]
+release = [
+    "build",
+    "twine"
+]
+
+[tool.setuptools]
+py-modules = ["pamm", "pamm_ui"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["py_engine*"]
+
+[tool.setuptools.package-data]
+"py_engine" = ["main_engine.dll"]
+
+[tool.black]
+line-length = 120
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

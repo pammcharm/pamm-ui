@@ -1,0 +1,4 @@
+include LICENSE
+include README.md
+recursive-include py_engine *.py *.dll
+recursive-include c_engine *.c *.ps1
